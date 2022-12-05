@@ -7,7 +7,7 @@ import "fmt"
 
 func main() {
 	row, col := 2, 3
-	m := makeMatrix(count(row), count(col), '.')
+	m := makeMatrix(count(row), count(col))
 	for r, row := range m {
 		for c := range row {
 			if r == 0 || r%2 == 0 {
@@ -19,6 +19,8 @@ func main() {
 			} else {
 				if c == 0 || c%2 == 0 {
 					m[r][c] = '|'
+				} else {
+					m[r][c] = '.'
 				}
 			}
 		}
@@ -32,13 +34,10 @@ func main() {
 	}
 }
 
-func makeMatrix(row, col int, val rune) [][]rune {
+func makeMatrix(row, col int) [][]rune {
 	m := make([][]rune, row)
 	for r := 0; r < row; r++ {
 		m[r] = make([]rune, col)
-		for c := 0; c < col; c++ {
-			m[r][c] = val
-		}
 	}
 	return m
 }
